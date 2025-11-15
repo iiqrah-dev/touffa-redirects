@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Redirecting...</h2>
+        <p id="message">Please wait while we redirect you.</p>
+    </div>
+
+    <script>
+        // Redirect mapping - add your destinations here
+        const redirects = {
+            'walletfeatures': 'https://www.youtube.com/@touffa_official',
+            // 'feedback': 'https://forms.google.com/your-form-id',
+            'instagram': 'https://instagram.com/touffa_official',
+            // Add more redirects as needed
+            // 'key': 'destination-url',
+        };
+
+        // Default destination if no parameter or invalid parameter
+        const defaultDestination = 'https://touffa.com';
+
+        // Get the 'r' parameter from URL (r = redirect)
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectKey = urlParams.get('r');
+
+        // Determine which destination to redirect to
+        let destination = defaultDestination;
+        if (redirectKey && redirects[redirectKey]) {
+            destination = redirects[redirectKey];
+        }
+
+        // Redirect immediately
+        window.location.href = destination;
+    </script>
+</body>
+</html>
